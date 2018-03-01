@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="quizDescription">Lord of the Rings Quiz</string>
+
+    <string name="questionOne">1 - What are Durins Folk commonly known as?</string>
+    <string name="questionOneOptionOne">Hobbits from outside The Shire</string>
+    <string name="questionOneOptionTwo">Dwarves</string>
+    <string name="questionOneOptionThree">Great Eagles</string>
+    <string name="questionOneOptionFour">Forrest Elves</string>
+
+    <string name="questionTwo">2 - What kind of creatures are the spawn of Ungoliant?</string>
+    <string name="questionTwoOptionOne">Flying fell beasts</string>
+    <string name="questionTwoOptionTwo">Giant Spiders</string>
+    <string name="questionTwoOptionThree">Uruk-hai</string>
+    <string name="questionTwoOptionFour">Hill Giants</string>
+
+    <string name="questionThree">3 - Which of these weapons was found in the Trolls Cave?</string>
+    <string name="questionThreeOptionOne">Sting</string>
+    <string name="questionThreeOptionTwo">Andúril</string>
+    <string name="questionThreeOptionThree">Angrist</string>
+    <string name="questionThreeOptionFour">Glamdring the Foe-hammer</string>
+
+    <string name="questionFour">4 - What do the Elves call the Hobbits?</string>
+    <string name="questionFourOptionOne">The Periannath</string>
+    <string name="questionFourOptionTwo">The Onodrim</string>
+    <string name="questionFourOptionThree">The Urulóki</string>
+    <string name="questionFourOptionFour">The Mellon</string>
+
+    <string name="questionFive">5 - Where can the ring be destroyed in The Lord Of The Rings trilogy?</string>
+    <string name="questionFiveOptionOne">Mount Doom</string>
+    <string name="questionFiveOptionTwo">The Shire</string>
+    <string name="questionFiveOptionThree">Gondor</string>
+    <string name="questionFiveOptionFour">Osgiliath</string>
+
+    <string name="questionSix">6 - What is the name of the dwarf that takes part in The Fellowship Of The Ring?</string>
+    <string name="correctAnswer6">GIMLI</string>
+
+    <string name="questionSeven">7 - Frodo is a what to Bilbo in The Fellowship Of The Ring?</string>
+    <string name="questionSevenOptionOne">Son</string>
+    <string name="questionSevenOptionTwo">Cousin</string>
+    <string name="questionSevenOptionThree">Nephew</string>
+    <string name="questionSevenOptionFour">Father</string>
+
+    <string name="questionEight">8 - How many people take part in The Fellowship Of The Ring?</string>
+    <string name="correctAnswer8">9</string>
+
+    <string name="questionNine">9 - What is the name of the place where Frodo lives?</string>
+    <string name="questionNineOptionOne">Mirkwood</string>
+    <string name="questionNineOptionTwo">Hobbiton</string>
+    <string name="questionNineOptionThree">Rivendell</string>
+    <string name="questionNineOptionFour">Bree</string>
+
+    <string name="questionTen">10 - Who were present in the Elrond Council?</string>
+    <string name="questionTenOptionOne">Boromir</string>
+    <string name="questionTenOptionTwo">Galadriel</string>
+    <string name="questionTenOptionThree">Aragorn</string>
+    <string name="questionTenOptionFour">Bilbo</string>
+
+    <string name="correct">The correct answer is: </string>
+
+    <string name="submitQuiz">Submit Quiz</string>
+    <string name="resetQuiz">Reset Quiz</string>
+    <string name="finalScore">Your score is: </string>
+    <string name="alert">Please answer all questions.</string>
+
+
+
+
+
+</resources>
