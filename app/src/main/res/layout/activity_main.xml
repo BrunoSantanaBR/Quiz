@@ -373,20 +373,12 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/score_Text_View"
-            style="@style/Score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/quiz_layout"
-            android:text="@string/finalScore" />
-
         <Button
             style="@style/Button"
             android:id="@+id/submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/score_Text_View"
+            android:layout_below="@id/quiz_layout"
             android:onClick="submitQuiz"
             android:text="@string/submitQuiz" />
 

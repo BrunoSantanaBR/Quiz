@@ -7,11 +7,9 @@ import android.text.InputType;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.view.ViewDebug;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -96,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
             answerCheckBoxWrong2 = findViewById(R.id.question_ten_option_four_checkBox);
             checkCheckBoxQuestions(answerCheckBoxRight1, answerCheckBoxRight2, answerCheckBoxWrong1, answerCheckBoxWrong2);
 
+            findViewById(R.id.submit_button).setEnabled(false);
+
             displayScore();
 
         } else {
@@ -104,12 +104,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /** This method is called to verify if the Radio Button selected in the Quiz is correct
+    /**
+     * This method is called to verify if the Radio Button selected in the Quiz is correct
      * if its correct the method changes the color of the text to green and add 1 point to the global variable score
      * if its not correct the method changes the color of the wrong answer text to red and the right answer text to green and do not add any point to the global variable score
      *
      * @param radioButton Radio Button selected on the Quiz
-     * @param radioGroup Radio Group of the Radio Button selected on the Quiz
+     * @param radioGroup  Radio Group of the Radio Button selected on the Quiz
      */
     private void checkRadioButtonsQuestions(RadioButton radioButton, RadioGroup radioGroup) {
         if (radioButton.isChecked()) {
@@ -137,7 +138,33 @@ public class MainActivity extends AppCompatActivity {
      * @param checkBoxWrong2 Check Box with wrong answer in the Quiz
      */
     private void checkCheckBoxQuestions(CheckBox checkBoxRight1, CheckBox checkBoxRight2, CheckBox checkBoxWrong1, CheckBox checkBoxWrong2) {
-        if (checkBoxRight1.isChecked() && checkBoxRight2.isChecked()) {
+        if (checkBoxRight1.isChecked() && checkBoxRight2.isChecked() && checkBoxWrong1.isChecked() && checkBoxWrong2.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setColorText(checkBoxWrong1, Color.RED);
+            setColorText(checkBoxWrong2, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight1.isChecked() && checkBoxRight2.isChecked() && checkBoxWrong1.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setColorText(checkBoxWrong1, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight1.isChecked() && checkBoxRight2.isChecked() && checkBoxWrong2.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setColorText(checkBoxWrong2, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight1.isChecked() && checkBoxWrong1.isChecked() && checkBoxWrong2.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxWrong1, Color.RED);
+            setColorText(checkBoxWrong2, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight2.isChecked() && checkBoxWrong1.isChecked() && checkBoxWrong2.isChecked()) {
+            setColorText(checkBoxRight2, Color.GREEN);
+            setColorText(checkBoxWrong1, Color.RED);
+            setColorText(checkBoxWrong2, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight1.isChecked() && checkBoxRight2.isChecked()) {
             setColorText(checkBoxRight1, Color.GREEN);
             setColorText(checkBoxRight2, Color.GREEN);
             setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
@@ -162,10 +189,28 @@ public class MainActivity extends AppCompatActivity {
             setColorText(checkBoxRight2, Color.GREEN);
             setColorText(checkBoxWrong2, Color.RED);
             setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
-        } else {
+        } else if (checkBoxWrong1.isChecked() && checkBoxWrong2.isChecked()) {
             setColorText(checkBoxRight1, Color.GREEN);
             setColorText(checkBoxRight2, Color.GREEN);
             setColorText(checkBoxWrong1, Color.RED);
+            setColorText(checkBoxWrong2, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight1.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxRight2.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxWrong1.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
+            setColorText(checkBoxWrong1, Color.RED);
+            setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
+        } else if (checkBoxWrong2.isChecked()) {
+            setColorText(checkBoxRight1, Color.GREEN);
+            setColorText(checkBoxRight2, Color.GREEN);
             setColorText(checkBoxWrong2, Color.RED);
             setStateCheckBox(checkBoxRight1, checkBoxRight2, checkBoxWrong1, checkBoxWrong2, false);
         }
@@ -178,10 +223,10 @@ public class MainActivity extends AppCompatActivity {
      * and do not add any point to the global variable score
      *
      * @param editText Text typed in the Quiz
-     * @param answer Right answer
+     * @param answer   Right answer
      */
     private void checkEditTextQuestions(EditText editText, String answer) {
-        if (editText.getText().toString().toUpperCase().equals(answer)) {
+        if (editText.getText().toString().trim().toUpperCase().equals(answer)) {
             setColorText(editText, Color.GREEN);
             editText.setInputType(InputType.TYPE_NULL);
             score++;
@@ -189,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
             String stringTemp;
             SpannableStringBuilder builder = new SpannableStringBuilder();
 
-            SpannableString redSpannable = new SpannableString(editText.getText().toString().toUpperCase());
-            redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, editText.getText().toString().toUpperCase().length(), 0);
+            SpannableString redSpannable = new SpannableString(editText.getText().toString().trim().toUpperCase());
+            redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, editText.getText().toString().toUpperCase().trim().length(), 0);
             builder.append(redSpannable);
 
             stringTemp = "   " + getString(R.string.correct) + " " + answer;
@@ -210,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called to enable the Radio Buttons after reset the quiz
      *
      * @param radioGroup Radio Group of the Radio Buttons selected on the Quiz
-     * @param checked true to Enable and false to disable
+     * @param checked    true to Enable and false to disable
      */
     private void setStateRadioButtons(RadioGroup radioGroup, boolean checked) {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
@@ -219,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * This method is called to disable the Check Box's after submit the quiz
      * or
      * This method is called to enable the Check Box's after reset the quiz
@@ -228,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
      * @param checkBox2 Check Box 1 on the Quiz Question
      * @param checkBox3 Check Box 1 on the Quiz Question
      * @param checkBox4 Check Box 1 on the Quiz Question
-     * @param state true to Enable and false to disable
+     * @param state     true to Enable and false to disable
      */
     private void setStateCheckBox(CheckBox checkBox1, CheckBox checkBox2, CheckBox checkBox3, CheckBox checkBox4, Boolean state) {
         checkBox1.setEnabled(state);
@@ -238,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *  This method is called to set the color of the text of the Radio Button
+     * This method is called to set the color of the text of the Radio Button
      *
      * @param radioButton Radio Button in the Quiz
      * @param color
@@ -278,8 +322,15 @@ public class MainActivity extends AppCompatActivity {
      * This method is called to display the score to the player
      */
     private void displayScore() {
-        TextView displayScore = findViewById(R.id.score_Text_View);
-        displayScore.setText(getString(R.string.finalScore) + " " + String.valueOf(this.score));
+
+        String displayScore = getString(R.string.finalScore) + " " + String.valueOf(this.score);
+
+        Toast toast = Toast.makeText(getApplicationContext(),
+                displayScore, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
+
+
     }
 
     /**
@@ -327,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Check Question 6
         answerEditText = findViewById(R.id.question_six);
-        if (!(answerEditText.getText().toString().equals(""))) {
+        if (!(answerEditText.getText().toString().trim().equals(""))) {
             count++;
         }
 
@@ -339,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Check Question 8
         answerEditText = findViewById(R.id.question_eight);
-        if (!(answerEditText.getText().toString().equals(""))) {
+        if (!(answerEditText.getText().toString().trim().equals(""))) {
             count++;
         }
 
@@ -408,7 +459,6 @@ public class MainActivity extends AppCompatActivity {
         setColorText(answerCheckBoxWrong1, Color.BLACK);
         setColorText(answerCheckBoxWrong2, Color.BLACK);
         setStateCheckBox(answerCheckBoxRight1, answerCheckBoxRight2, answerCheckBoxWrong1, answerCheckBoxWrong2, true);
-
 
         //Reset Question 4
         radioGroup = findViewById(R.id.question_four_radioGroup);
@@ -489,6 +539,8 @@ public class MainActivity extends AppCompatActivity {
         setColorText(answerCheckBoxWrong2, Color.BLACK);
         setStateCheckBox(answerCheckBoxRight1, answerCheckBoxRight2, answerCheckBoxWrong1, answerCheckBoxWrong2, true);
 
+        findViewById(R.id.submit_button).setEnabled(true);
+
         answerRadioButton = null;
         answerCheckBoxRight1 = null;
         answerCheckBoxRight2 = null;
@@ -499,7 +551,6 @@ public class MainActivity extends AppCompatActivity {
         score = 0;
         count = 0;
 
-        displayScore();
     }
 
 }

@@ -56,15 +56,11 @@
     <string name="questionTenOptionThree">Aragorn</string>
     <string name="questionTenOptionFour">Bilbo</string>
 
-    <string name="correct">The correct answer is: </string>
+    <string name="correct">The answer is: </string>
 
     <string name="submitQuiz">Submit Quiz</string>
     <string name="resetQuiz">Reset Quiz</string>
     <string name="finalScore">Your score is: </string>
     <string name="alert">Please answer all questions.</string>
-
-
-
-
 
 </resources>
